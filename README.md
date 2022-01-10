@@ -38,7 +38,7 @@ npx jstunnel --help
     '',
     'options:',
     '  -p, --port           Your port           [required]',
-    '  -h, --host           Your host           [localhost]',
+    '      --host           Your host           [localhost]',
     '      --type           Http or tcp         [http]',
     '  -s, --subdomain      Subdomain           [random]',
     '      --apiUrl         Api url             [default]',
