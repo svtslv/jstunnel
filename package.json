@@ -1,6 +1,6 @@
 {
   "name": "jstunnel",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Secure tunnels to localhost",
   "license": "MIT",
   "author": "Sviatoslav H",

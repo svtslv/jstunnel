@@ -19,7 +19,13 @@ export class TunnelCli {
 
   async run() {
     const args = minimist(process.argv.slice(2));
-    this.clientOptions.localPort = args.port || this.clientOptions.localHost;
+    args.port = args.p || args.port;
+    args.host = args.h || args.host;
+    args.subdomain = args.s || args.subdomain;
+    args.help = args.h || args.help;
+    args.version = args.v || args.version;
+
+    this.clientOptions.localPort = args.port || this.clientOptions.localPort;
     this.clientOptions.localHost = args.host || this.clientOptions.localHost;
     this.clientOptions.localTls = Boolean(args.localTls === 'true');
     this.clientOptions.requestedId = args.subdomain || args.tcpPort || this.clientOptions.requestedId;
@@ -98,6 +104,9 @@ export class TunnelCli {
       ].join('\n');
 
       this.logger.log(data.tunnelType === 'tcp' ? tcpInfo : httpInfo);
+
+      const info = ['Hit CTRL-C to stop the tunnel', 'Run with --help to print help', ''].join('\n');
+      this.logger.log(info);
     } catch (error) {
       this.logger.debug('createCluster error', error);
       this.logger.error('Connection failed');
