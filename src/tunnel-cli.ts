@@ -35,7 +35,7 @@ export class TunnelCli {
       [
         '',
         `Homepage:      ${this.packageJson.homepage}`,
-        `Repository:    ${this.packageJson.repository.url}`,
+        `Repository:    ${this.packageJson.repositoryUrl || this.packageJson.repository.url}`,
         `Version:       ${this.packageJson.version}`,
         '',
       ].join('\n'),

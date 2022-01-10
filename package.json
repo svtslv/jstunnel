@@ -5,6 +5,7 @@
   "license": "MIT",
   "author": "Sviatoslav H",
   "homepage": "https://jstunnel.com",
+  "repositoryUrl": "https://github.com/svtslv/jstunnel",
   "repository": {
     "type": "git",
     "url": "https://github.com/svtslv/jstunnel"
