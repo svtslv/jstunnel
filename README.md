@@ -30,6 +30,14 @@ npx jstunnel [options]
 ## Examples
 
 ```bash
+npx jstunnel -p 3000 -s subdomain
+```
+
+```bash
+npx jstunnel -p 5432 -t=tcp
+```
+
+```bash
 npx jstunnel --help
 ```
 
@@ -39,7 +47,7 @@ npx jstunnel --help
     'options:',
     '  -p, --port           Your port           [required]',
     '      --host           Your host           [localhost]',
-    '      --type           Http or tcp         [http]',
+    '  -t  --type           Http or tcp         [http]',
     '  -s, --subdomain      Subdomain           [random]',
     '      --apiUrl         Api url             [default]',
     '      --authToken      Auth token          [null]',

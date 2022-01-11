@@ -20,6 +20,7 @@ export class TunnelCli {
   async run() {
     const args = minimist(process.argv.slice(2));
     args.port = args.p || args.port;
+    args.type = args.t || args.type;
     args.subdomain = args.s || args.subdomain;
     args.help = args.h || args.help;
     args.version = args.v || args.version;
@@ -63,7 +64,7 @@ export class TunnelCli {
         'options:',
         '  -p, --port           Your port           [required]',
         '      --host           Your host           [localhost]',
-        '      --type           Http or tcp         [http]',
+        '  -t  --type           Http or tcp         [http]',
         '  -s, --subdomain      Subdomain           [random]',
         '      --apiUrl         Api url             [default]',
         '      --authToken      Auth token          [null]',

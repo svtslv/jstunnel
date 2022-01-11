@@ -1,6 +1,6 @@
 {
   "name": "jstunnel",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Secure tunnels to localhost",
   "license": "MIT",
   "author": "Sviatoslav H",
@@ -15,7 +15,14 @@
     "tunnel",
     "client",
     "http",
-    "tcp"
+    "tcp",
+    "secure",
+    "https",
+    "cli",
+    "net",
+    "tls",
+    "ssl",
+    "socket"
   ],
   "files": [
     "dist"
