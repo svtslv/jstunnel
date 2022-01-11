@@ -34,7 +34,7 @@ npx jstunnel -p 3000 -s subdomain
 ```
 
 ```bash
-npx jstunnel -p 5432 -t=tcp
+npx jstunnel -p 5432 -t tcp
 ```
 
 ```bash
