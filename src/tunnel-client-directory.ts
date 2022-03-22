@@ -21,10 +21,7 @@ export class TunnelClientDirectory {
 
     server.on('connection', (socket) => {
       this.sockets.add(socket);
-
-      server.once('close', () => {
-        this.sockets.delete(socket);
-      });
+      socket.once('close', () => this.sockets.delete(socket));
     });
 
     server.listen();

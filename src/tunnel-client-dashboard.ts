@@ -54,10 +54,7 @@ export class TunnelClientDashboard {
 
     this.server.on('connection', (socket) => {
       this.sockets.add(socket);
-
-      this.server.once('close', () => {
-        this.sockets.delete(socket);
-      });
+      socket.once('close', () => this.sockets.delete(socket));
     });
 
     this.serverPort = this.server.address()['port'];
