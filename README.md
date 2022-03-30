@@ -1,4 +1,4 @@
-# JSTunnel - secure tunnels to localhost
+# JsTunnel - secure tunnels to localhost
 
 <a href="https://www.npmjs.com/package/jstunnel"><img src="https://img.shields.io/npm/v/jstunnel.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/package/jstunnel"><img src="https://img.shields.io/npm/l/jstunnel.svg" alt="Package License" /></a>
