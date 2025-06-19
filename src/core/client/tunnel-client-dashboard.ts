@@ -22,10 +22,11 @@ export class TunnelClientDashboard {
     });
 
     const app = express();
-    app.use(express.static(path.join(projectRoot, 'out')));
-    app.get('/', (_req, res) => {
-      res.sendFile(path.join(projectRoot, 'out', 'dashboard.html'));
-    });
+    app.use(
+      express.static(path.join(projectRoot, 'out'), {
+        index: 'dashboard.html',
+      }),
+    );
     app.use((_req, res, next) => {
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
