@@ -1,0 +1,79 @@
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: jstunnel
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jstunnel-server-deployment
+  namespace: jstunnel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jstunnel-server
+  template:
+    metadata:
+      labels:
+        app: jstunnel-server
+    spec:
+      imagePullSecrets:
+        - name: dockerhub-secret
+      containers:
+        - name: jstunnel-server-container
+          image: svtslv/jstunnel
+          command: ["jstunnel-server", '--maxBytes=99000000000']
+          tty: true
+          stdin: true
+          ports:
+            - containerPort: 9000
+          env:
+            - name: TUNNEL_SERVER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: environment-secret
+                  key: TUNNEL_SERVER_TOKEN
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jstunnel-server-service
+  namespace: jstunnel
+spec:
+  type: ClusterIP
+  selector:
+    app: jstunnel-server
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wildcard.jstunnel.com-ingress
+  namespace: jstunnel
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "X-Powered-By: JsTunnel";
+      more_set_headers "Strict-Transport-Security: max-age=0; includeSubDomains";
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - "*.jstunnel.com"
+      secretName: wildcard.jstunnel.com-tls
+  rules:
+    - host: "*.jstunnel.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: jstunnel-server-service
+                port:
+                  number: 9000
