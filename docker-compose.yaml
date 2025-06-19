@@ -1,0 +1,7 @@
+services:
+  jstunnel-server:
+    image: svtslv/jstunnel
+    command: jstunnel-server
+    ports:
+      - "9000:9000"
+    restart: unless-stopped

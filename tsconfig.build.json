@@ -1,4 +1,14 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["node_modules", "test", "dist", "index.ts", "**/*spec.ts"]
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "./dist/core",
+  },
+  "include": [
+    "./src/core/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
 }

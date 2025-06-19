@@ -12,6 +12,7 @@
 - [Password protection](#password-protection)
 - [Web interface](#web-interface)
 - [HTTP logs](#http-logs)
+- [Server](#server)
 - [License](#license)
 
 ## Description
@@ -32,10 +33,6 @@ Start a webserver on some local port (e.g. 3000) and use the cli to request a tu
 #### example: http tunnel
 ```bash
 npx jstunnel -p 3000
-```
-#### example: tcp tunnel
-```bash
-npx jstunnel -p 5432 -t tcp
 ```
 #### example: print help
 ```bash
@@ -98,6 +95,47 @@ npx jstunnel -p 3000 --log [type]:200
 #### example: disable
 ```bash
 npx jstunnel -p 3000 --log false
+```
+
+## Server
+#### Globally via `npm`
+```bash
+npm install -g jstunnel
+jstunnel-server --help
+```
+#### Running on-demand:
+```bash
+npx -p jstunnel jstunnel-server [options]
+```
+
+#### Docker:
+```bash
+# svtslv/jstunnel or ghcr.io/svtslv/jstunnel
+docker run \
+  -d \
+  --name jstunnel-server \
+  --restart unless-stopped \
+  -p 9000:9000 \
+  svtslv/jstunnel \
+  jstunnel-server
+```
+#### Docker Compose:
+```bash
+cat ./docker-compose.yaml
+```
+
+#### Kubernetes:
+```bash
+cat ./kubernetes.yaml
+```
+
+#### Examples:
+```bash
+# With SSl (Single or Wildcard)
+jstunnel -p 3000 -s tunnel --domain domain.com --api https://tunnel.domain.com
+
+# Without SSL (Net connect)
+jstunnel -p 3000 --domain domain.com --remoteTls false --api http://net.domain.com
 ```
 
 ## Sponsored by

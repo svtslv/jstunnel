@@ -1,0 +1,8 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+.highlight {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #f8f9fa;
+    display: block;
+}
