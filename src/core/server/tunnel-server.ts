@@ -80,7 +80,6 @@ export class TunnelServer {
 
   async createServer() {
     const app = express();
-    app.use(express.json());
     app.use(cookieParser());
     app.use(useragent.express());
     app.use(express.static(path.join(projectRoot, 'out')));
@@ -98,7 +97,7 @@ export class TunnelServer {
       client.handleRequest(req, res);
     });
 
-    app.post('/.tunnels/create', async (req, res) => {
+    app.post('/.tunnels/create', express.json(), async (req, res) => {
       this.logger.debug('post /.tunnels/create', req.body);
       const httpTunnelRequest = req.body as HttpTunnelRequest;
 
