@@ -13,7 +13,7 @@ jobs:
     environment:
       name: production
     env:
-      KUBE_NAMESPACE: jstunnel
+      KUBE_NAMESPACE: jstunnel-ns
       DOCKER_IMAGE_TAG: svtslv/jstunnel:${{ github.ref_name }}
       DOCKER_IMAGE_LATEST: svtslv/jstunnel
       GITHUB_IMAGE_TAG: ghcr.io/svtslv/jstunnel:${{ github.ref_name }}
