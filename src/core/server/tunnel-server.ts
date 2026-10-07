@@ -61,7 +61,7 @@ export class TunnelServer {
       }
 
       socket.write(
-        'HTTP/1.1 101 Switching Protocols\r\n' + 'Connection: Upgrade\r\n' + 'Upgrade: tunnel-protocol\r\n' + '\r\n',
+        'HTTP/1.1 101 Switching Protocols\r\n' + 'Connection: Upgrade\r\n' + 'Upgrade: x-tunnel-protocol\r\n' + '\r\n',
       );
 
       socket.setTimeout(0);
